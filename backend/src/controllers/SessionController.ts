@@ -6,8 +6,8 @@ class SessionController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { id, password } = request.body;
 
-    const PessoaRespository = new PessoaRepository();
-    const createSession = new SessionService(PessoaRespository);
+    const pessoaRepository = new PessoaRepository();
+    const createSession = new SessionService(pessoaRepository);
 
     const session = await createSession.execute({
       id,

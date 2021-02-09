@@ -6,7 +6,7 @@ const routes = Router();
 
 const prefixRoutes = '/api/v1';
 
-routes.get('/', (request, response) => {
+routes.get('/', (_request, response) => {
   response.json({ message: 'API SEMIJOIAS - WTASSO CONSULTORIA E SERVIÇOS' });
 });
 

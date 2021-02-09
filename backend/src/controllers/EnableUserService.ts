@@ -7,23 +7,23 @@ interface Request {
   id: string;
 }
 class EnablePessoaService {
-  private PessoaRepository: IPessoaRepository;
+  private pessoaRepository: IPessoaRepository;
 
-  constructor(PessoaRepository: PessoaRepository) {
-    this.PessoaRepository = PessoaRepository;
+  constructor(pessoaRepository: PessoaRepository) {
+    this.pessoaRepository = pessoaRepository;
   }
 
   public async execute({ id }: Request): Promise<Pessoa> {
-    const Pessoa = await this.PessoaRepository.findById(id);
+    const pessoa = await this.pessoaRepository.findById(id);
 
-    if (!Pessoa) {
+    if (!pessoa) {
       throw new AppError('Usuário não encontrado', 400);
     }
 
-    Pessoa.active = !Pessoa.active;
+    pessoa.ativo = !pessoa.ativo;
 
-    await this.PessoaRepository.save(Pessoa);
-    return Pessoa;
+    await this.pessoaRepository.save(pessoa);
+    return pessoa;
   }
 }
 
